@@ -261,6 +261,15 @@ input:focus{outline:0;border-color:var(--orange2);box-shadow:0 0 0 4px rgba(255,
   background:rgba(55,174,226,.1);border:1px solid rgba(55,174,226,.35);transition:background .15s,border-color .15s}
 .footer-tg:hover{background:rgba(55,174,226,.18);border-color:#37aee2}
 .inline-link{color:var(--blue2);font-weight:700;text-decoration:underline;text-underline-offset:3px}
+.serial-row{display:flex;gap:10px;align-items:stretch}
+.serial-row input{flex:1;min-width:0}
+.serial-row .btn{min-height:52px;padding:0 16px;white-space:nowrap;flex:none}
+.serial-hint{color:var(--dim);font-size:13px;line-height:1.5;margin:9px 2px 2px}
+.serial-hint b{color:var(--silver)}
+.serial-hint.ok{color:var(--ok)}
+.serial-hint.ok b{color:var(--ok)}
+.serial-hint.warn{color:var(--warn)}
+@media (max-width:680px){.serial-row{flex-direction:column}.serial-row .btn{width:100%}}
 .footer{max-width:1160px;margin:80px auto 0;padding:28px 20px 40px;border-top:1px solid var(--line);
   display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-content:space-between;color:var(--dim);font-size:13.5px}
 
@@ -418,6 +427,7 @@ input:focus{outline:0;border-color:var(--orange2);box-shadow:0 0 0 4px rgba(255,
       <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></symbol>
       <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5"/></symbol>
       <symbol id="i-bolt" viewBox="0 0 24 24"><path d="M13 2.5 5 13.5h6l-1 8 8-11h-6z"/></symbol>
+      <symbol id="i-usb" viewBox="0 0 24 24"><path d="M12 21V4m0 0 3 3m-3-3L9 7m3 5-3.5-2.5M12 14l3.5-2.5M9.5 9.5 8 10v2.5M15 9.5l1.5.5V13"/><circle cx="12" cy="21" r="1.2"/></symbol>
     </defs>
   </svg>
 
@@ -448,7 +458,7 @@ input:focus{outline:0;border-color:var(--orange2);box-shadow:0 0 0 4px rgba(255,
   <main id="landing">
     <section class="hero" id="top">
       <div class="hero-copy">
-        <span class="chip"><i class="dot"></i><span data-version>OS3.0.57.0</span> · Global</span>
+        <span class="chip"><i class="dot"></i><span data-version>OS3.0.570.0.FMK</span> · Global</span>
         <h1>Xiaomi 17 Pro'nuz <em>tam Türkçe</em> konuşsun.</h1>
         <p class="lead">FMKOS; Xiaomi 17 Pro ve 17 Pro Max'e özel hazırlanmış, arka ekran ve Süper Ada
           özellikleriyle gelen premium Global ROM'dur. ROM, lisans ve kurulum aracı tek panelde.</p>
@@ -558,12 +568,14 @@ input:focus{outline:0;border-color:var(--orange2);box-shadow:0 0 0 4px rgba(255,
             <label><input type="radio" name="regDevice" value="pandora"><span><b>17 Pro</b><small>pandora</small></span></label>
             <label><input type="radio" name="regDevice" value="popsicle"><span><b>17 Pro Max</b><small>popsicle</small></span></label>
           </div>
-          <div class="grid2">
-            <div><label for="regSerial">Seri no <small>(isteğe bağlı)</small></label>
-              <input id="regSerial" maxlength="40" autocomplete="off"></div>
-            <div><label for="regContact">Telegram <small>(isteğe bağlı)</small></label>
-              <input id="regContact" maxlength="60" placeholder="@kullanici" autocomplete="off"></div>
+          <label for="regSerial">Telefon seri no <small>(isteğe bağlı)</small></label>
+          <div class="serial-row">
+            <input id="regSerial" maxlength="40" autocomplete="off" placeholder="Boş bırakabilirsiniz">
+            <button class="btn ghost" type="button" id="readSerial"><svg class="ic"><use href="#i-usb"/></svg><span>Seri No Oku</span></button>
           </div>
+          <p class="serial-hint" id="serialHint">Telefonu kabloyla bağlayın; <b>Geliştirici seçenekleri</b> ve <b>USB hata ayıklama</b> açık olsun, sonra "Seri No Oku"ya basın; seri otomatik dolar (Chrome veya Edge). Zorunlu değil, boş da bırakabilirsiniz.</p>
+          <label for="regContact">Telegram <small>(isteğe bağlı)</small></label>
+          <input id="regContact" maxlength="60" placeholder="@kullanici" autocomplete="off">
           <input id="regWebsite" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
           <button class="btn primary block" type="submit">Kaydı Gönder</button>
         </form>
@@ -616,7 +628,7 @@ input:focus{outline:0;border-color:var(--orange2);box-shadow:0 0 0 4px rgba(255,
         <article class="device d-pro">
           <div class="device-text"><span class="tag">PANDORA</span><h3>Xiaomi 17 Pro</h3>
             <p>17 Pro'ya özel FMKOS derlemesi ve cihazınıza bağlı lisans.</p>
-            <span class="ver" data-version>OS3.0.57.0</span>
+            <span class="ver" data-version>OS3.0.570.0.FMK</span>
             <button class="btn primary sm" data-auth="register" data-device="pandora">Bu cihazla kayıt ol</button></div>
           <div class="phone p-pro mini" aria-hidden="true">
             <div class="island"><div class="lenses"><i></i><i></i></div>
@@ -627,7 +639,7 @@ input:focus{outline:0;border-color:var(--orange2);box-shadow:0 0 0 4px rgba(255,
         <article class="device d-max">
           <div class="device-text"><span class="tag">POPSICLE</span><h3>Xiaomi 17 Pro Max</h3>
             <p>17 Pro Max için optimize edilmiş FMKOS derlemesi ve cihazınıza bağlı lisans.</p>
-            <span class="ver" data-version>OS3.0.57.0</span>
+            <span class="ver" data-version>OS3.0.570.0.FMK</span>
             <button class="btn primary sm" data-auth="register" data-device="popsicle">Bu cihazla kayıt ol</button></div>
           <div class="phone p-max mini" aria-hidden="true">
             <div class="island"><div class="lenses"><i></i><i></i></div>
@@ -791,7 +803,7 @@ input:focus{outline:0;border-color:var(--orange2);box-shadow:0 0 0 4px rgba(255,
 
   /** Yerel önizleme için sahte sunucu (Google dışında açıldığında). Kod: 123456 */
   function demoServer(name, args) {
-    var pub = { version: 'OS3.0.57.0', telegram: DEFAULT_TELEGRAM, announcement: '' };
+    var pub = { version: 'OS3.0.570.0.FMK', telegram: DEFAULT_TELEGRAM, announcement: '' };
     var answers = {
       apiPublic: function () { return { ok: true, data: pub }; },
       apiRequestCode: function () { return { ok: true, data: { ttl: 600 } }; },
@@ -1084,6 +1096,49 @@ input:focus{outline:0;border-color:var(--orange2);box-shadow:0 0 0 4px rgba(255,
     $('navLogout').addEventListener('click', logout);
     $('pCopy').addEventListener('click', copyLicense);
     bindOtp();
+    bindSerialReader();
+  }
+
+  /* ---------- seri no oku (WebUSB) ---------- */
+  // Telefonun ADB arayuzu USB tanimlayicisindaki seri numarasini verir; bu, kurulum aracinin
+  // "adb devices" ile okudugu seriyle ayni oldugundan uretilen lisans aktivasyonda birebir eslesir.
+  var ADB_IF = { classCode: 0xff, subclassCode: 0x42, protocolCode: 0x01 };
+
+  function serialStatus(msg, kind) {
+    var el = $('serialHint');
+    if (!el) return;
+    el.innerHTML = msg;
+    el.className = 'serial-hint' + (kind ? ' ' + kind : '');
+  }
+
+  function bindSerialReader() {
+    var btn = $('readSerial');
+    if (!btn) return;
+    if (!(navigator.usb && navigator.usb.requestDevice)) {
+      btn.disabled = true;
+      serialStatus('Bu tarayıcı USB cihaz okumayı desteklemiyor. <b>Chrome</b> veya <b>Edge</b> kullanın ya da seriyi elle yazın.', 'warn');
+      return;
+    }
+    btn.addEventListener('click', function () {
+      btn.disabled = true;
+      serialStatus('Telefon seçim penceresi açılıyor… Listeden telefonunuzu seçip "Bağlan"a basın.');
+      navigator.usb.requestDevice({ filters: [ADB_IF] }).then(function (dev) {
+        var sn = ((dev && dev.serialNumber) || '').trim();
+        if (!sn) {
+          serialStatus('Telefon seçildi ama seri numarası okunamadı. Telefonda <b>USB hata ayıklama</b> açık olmalı. Seriyi elle de yazabilirsiniz.', 'warn');
+          return;
+        }
+        $('regSerial').value = sn;
+        var safe = sn.replace(/[&<>"']/g, function (c) { return '&#' + c.charCodeAt(0) + ';'; });
+        serialStatus('Seri numarası okundu: <b>' + safe + '</b>', 'ok');
+      }).catch(function (err) {
+        if (err && err.name === 'NotFoundError') {
+          serialStatus('Telefon seçilmedi ya da listede görünmedi. Kabloyu takıp <b>USB hata ayıklama</b>yı açın (Windows\'ta Google USB sürücüsü gerekebilir), sonra tekrar "Seri No Oku"ya basın. Olmazsa seriyi elle yazın.', 'warn');
+        } else {
+          serialStatus('Telefon okunamadı. Kabloyu kontrol edip tekrar deneyin ya da seriyi elle yazın.', 'warn');
+        }
+      }).then(function () { btn.disabled = false; });
+    });
   }
 
   /** Bölümler kaydırıldıkça yumuşakça belirir. Gözlemci yoksa içerik doğrudan görünür kalır. */
