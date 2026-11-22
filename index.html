@@ -448,7 +448,7 @@ input:focus{outline:0;border-color:var(--orange2);box-shadow:0 0 0 4px rgba(255,
   <main id="landing">
     <section class="hero" id="top">
       <div class="hero-copy">
-        <span class="chip"><i class="dot"></i><span data-version>OS4.0.57.0.FMK</span> · Global</span>
+        <span class="chip"><i class="dot"></i><span data-version>OS3.0.57.0</span> · Global</span>
         <h1>Xiaomi 17 Pro'nuz <em>tam Türkçe</em> konuşsun.</h1>
         <p class="lead">FMKOS; Xiaomi 17 Pro ve 17 Pro Max'e özel hazırlanmış, arka ekran ve Süper Ada
           özellikleriyle gelen premium Global ROM'dur. ROM, lisans ve kurulum aracı tek panelde.</p>
@@ -616,7 +616,7 @@ input:focus{outline:0;border-color:var(--orange2);box-shadow:0 0 0 4px rgba(255,
         <article class="device d-pro">
           <div class="device-text"><span class="tag">PANDORA</span><h3>Xiaomi 17 Pro</h3>
             <p>17 Pro'ya özel FMKOS derlemesi ve cihazınıza bağlı lisans.</p>
-            <span class="ver" data-version>OS 4.0.57.0 FMK</span>
+            <span class="ver" data-version>OS3.0.57.0</span>
             <button class="btn primary sm" data-auth="register" data-device="pandora">Bu cihazla kayıt ol</button></div>
           <div class="phone p-pro mini" aria-hidden="true">
             <div class="island"><div class="lenses"><i></i><i></i></div>
@@ -627,7 +627,7 @@ input:focus{outline:0;border-color:var(--orange2);box-shadow:0 0 0 4px rgba(255,
         <article class="device d-max">
           <div class="device-text"><span class="tag">POPSICLE</span><h3>Xiaomi 17 Pro Max</h3>
             <p>17 Pro Max için optimize edilmiş FMKOS derlemesi ve cihazınıza bağlı lisans.</p>
-            <span class="ver" data-version>OS 4.0.57.0 FMK</span>
+            <span class="ver" data-version>OS3.0.57.0</span>
             <button class="btn primary sm" data-auth="register" data-device="popsicle">Bu cihazla kayıt ol</button></div>
           <div class="phone p-max mini" aria-hidden="true">
             <div class="island"><div class="lenses"><i></i><i></i></div>
@@ -791,7 +791,7 @@ input:focus{outline:0;border-color:var(--orange2);box-shadow:0 0 0 4px rgba(255,
 
   /** Yerel önizleme için sahte sunucu (Google dışında açıldığında). Kod: 123456 */
   function demoServer(name, args) {
-    var pub = { version: 'OS4.0.57.0.FMK', telegram: DEFAULT_TELEGRAM, announcement: '' };
+    var pub = { version: 'OS3.0.57.0', telegram: DEFAULT_TELEGRAM, announcement: '' };
     var answers = {
       apiPublic: function () { return { ok: true, data: pub }; },
       apiRequestCode: function () { return { ok: true, data: { ttl: 600 } }; },
