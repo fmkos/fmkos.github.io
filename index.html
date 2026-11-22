@@ -254,6 +254,13 @@ input:focus{outline:0;border-color:var(--orange2);box-shadow:0 0 0 4px rgba(255,
 .cta>*{position:relative}
 .cta h2{font-size:clamp(26px,3.2vw,38px);font-weight:800}
 .cta p{font-weight:600;margin-top:8px;opacity:.82}
+.cta-actions{display:flex;flex-wrap:wrap;gap:12px}
+.btn.tg{background:linear-gradient(180deg,#37aee2,#1e96c8);color:#fff;box-shadow:0 12px 30px rgba(0,0,0,.28)}
+.btn.tg:hover{transform:translateY(-2px);background:linear-gradient(180deg,#45b8ea,#2299cc)}
+.footer-tg{display:inline-flex;align-items:center;gap:8px;padding:8px 14px;border-radius:99px;font-weight:700;color:#7fd0f5;
+  background:rgba(55,174,226,.1);border:1px solid rgba(55,174,226,.35);transition:background .15s,border-color .15s}
+.footer-tg:hover{background:rgba(55,174,226,.18);border-color:#37aee2}
+.inline-link{color:var(--blue2);font-weight:700;text-decoration:underline;text-underline-offset:3px}
 .footer{max-width:1160px;margin:80px auto 0;padding:28px 20px 40px;border-top:1px solid var(--line);
   display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-content:space-between;color:var(--dim);font-size:13.5px}
 
@@ -329,7 +336,7 @@ input:focus{outline:0;border-color:var(--orange2);box-shadow:0 0 0 4px rgba(255,
   .device{padding:24px;min-height:260px}
   .phone.mini{font-size:3.7px}
   .cta{margin:72px 16px 0;padding:32px 24px}
-  .cta .btn{width:100%}
+  .cta .btn,.cta-actions{width:100%}
 }
 
 /* Arka ekran tanitim animasyonlari: tam ekran, kameralar ekranin ustunde */
@@ -501,8 +508,8 @@ input:focus{outline:0;border-color:var(--orange2);box-shadow:0 0 0 4px rgba(255,
         <h2 class="title">Üç adımda <em>FMKOS</em>.</h2>
         <ol class="steps">
           <li><span>1</span><div><h3>Kayıt olun</h3><p>Ad, Google hesabınız ve cihazınızı bildirin. Kaydınız onaylanır.</p></div></li>
-          <li><span>2</span><div><h3>Panelden indirin</h3><p>E-posta koduyla giriş yapın; ROM, kurulum aracı ve lisans kodunuz hazır.</p></div></li>
-          <li><span>3</span><div><h3>Sihirbazı çalıştırın</h3><p>Telefonu bağlayın, FMKOS Kurulum'u açın, lisans kodunu girin ve bekleyin.</p></div></li>
+          <li><span>2</span><div><h3>Dosyaları indirin</h3><p>Onaylandıktan sonra panelden cihazınızın ROM'unu ve kurulum aracını aynı klasöre indirin.</p></div></li>
+          <li><span>3</span><div><h3>Kurulumu biz yapalım</h3><p>Telegram'dan saat alın; uzaktan bağlanıp lisansınızı tanımlıyor ve kurulumu sizin için yapıyoruz.</p></div></li>
         </ol>
       </div>
 
@@ -548,7 +555,7 @@ input:focus{outline:0;border-color:var(--orange2);box-shadow:0 0 0 4px rgba(255,
           <input id="regEmail" type="email" inputmode="email" autocomplete="email" placeholder="ornek@gmail.com" required>
           <span class="label">Cihazınız</span>
           <div class="device-pick" role="radiogroup" aria-label="Cihazınız">
-            <label><input type="radio" name="regDevice" value="pudding"><span><b>17 Pro</b><small>pudding</small></span></label>
+            <label><input type="radio" name="regDevice" value="pandora"><span><b>17 Pro</b><small>pandora</small></span></label>
             <label><input type="radio" name="regDevice" value="popsicle"><span><b>17 Pro Max</b><small>popsicle</small></span></label>
           </div>
           <div class="grid2">
@@ -607,10 +614,10 @@ input:focus{outline:0;border-color:var(--orange2);box-shadow:0 0 0 4px rgba(255,
       <h2 class="title">İki cihaz, <em>iki özel ROM</em>.</h2>
       <div class="devices">
         <article class="device d-pro">
-          <div class="device-text"><span class="tag">PUDDING</span><h3>Xiaomi 17 Pro</h3>
+          <div class="device-text"><span class="tag">PANDORA</span><h3>Xiaomi 17 Pro</h3>
             <p>17 Pro'ya özel FMKOS derlemesi ve cihazınıza bağlı lisans.</p>
             <span class="ver" data-version>OS 4.0.57.0 FMK</span>
-            <button class="btn primary sm" data-auth="register" data-device="pudding">Bu cihazla kayıt ol</button></div>
+            <button class="btn primary sm" data-auth="register" data-device="pandora">Bu cihazla kayıt ol</button></div>
           <div class="phone p-pro mini" aria-hidden="true">
             <div class="island"><div class="lenses"><i></i><i></i></div>
               <div class="rear clock"><span class="hand hh"></span><span class="hand mm"></span></div></div>
@@ -635,10 +642,12 @@ input:focus{outline:0;border-color:var(--orange2);box-shadow:0 0 0 4px rgba(255,
       <p class="eyebrow">Merak edilenler</p>
       <h2 class="title">Sık sorulan sorular</h2>
       <div class="faq">
-        <details><summary>Hangi cihazlar destekleniyor?</summary><p>Xiaomi 17 Pro (pudding) ve Xiaomi 17 Pro Max (popsicle). Her cihazın ROM dosyası ayrıdır; panel size kendi cihazınızın dosyasını gösterir.</p></details>
+        <details><summary>Hangi cihazlar destekleniyor?</summary><p>Xiaomi 17 Pro (pandora) ve Xiaomi 17 Pro Max (popsicle). Her cihazın ROM dosyası ayrıdır; panel size kendi cihazınızın dosyasını gösterir.</p></details>
         <details><summary>Nasıl giriş yapacağım, şifrem yok?</summary><p>Şifre kullanmıyoruz. Kayıtlı e-posta adresinizi yazarsınız, 10 dakika geçerli 6 haneli kod e-postanıza gelir.</p></details>
-        <details><summary>ROM ve lisans kodumu nereden alacağım?</summary><p>Kaydınız onaylandıktan sonra giriş yaptığınızda panelinizde indirme bağlantıları ve lisans kodunuz görünür. Dosyalar yalnızca kayıt olduğunuz Google hesabıyla açılır; indirirken o hesapla oturum açmış olun.</p></details>
-        <details><summary>Kurulumda verilerim silinir mi?</summary><p>Evet, kurulum telefonu tamamen sıfırlar. Kurulum aracındaki yedekleme seçeneğini kullanarak önce yedek alın.</p></details>
+        <details><summary>ROM dosyamı nereden indireceğim?</summary><p>Kaydınız onaylandıktan sonra giriş yaptığınızda panelinizde cihazınızın ROM'u ve kurulum aracı görünür. Dosyalar yalnızca kayıt olduğunuz Google hesabıyla açılır; indirirken o hesapla oturum açmış olun. ROM yaklaşık 8 GB'tır.</p></details>
+        <details><summary>Kurulumu kim yapıyor?</summary><p>Kurulumu biz yapıyoruz. Dosyaları indirdikten sonra Telegram'dan saat alırsınız; belirlenen saatte bilgisayarınıza uzaktan bağlanır, cihazınıza özel lisansı tanımlar ve kurulumu baştan sona tamamlarız. Sizden yalnızca bilgisayarın açık, telefonun USB ile bağlı olması beklenir.</p></details>
+        <details><summary>Lisans nasıl çalışıyor?</summary><p>Lisans telefonunuzun seri numarasına bağlıdır ve yalnızca o cihazda çalışır. ROM dosyası şifrelidir; lisans olmadan açılmaz ve kurulamaz. Lisansınızı kurulum sırasında biz tanımlarız.</p></details>
+        <details><summary>Kurulumda verilerim silinir mi?</summary><p>Evet, kurulum telefonu tamamen sıfırlar. Kurulum saatinden önce fotoğraflarınızın ve verilerinizin yedeğini alın.</p></details>
         <details><summary>Bootloader kilidi açık mı olmalı?</summary><p>Evet. Kurulum için bootloader kilidi açık olmalı ve kurulumdan sonra da açık kalmalıdır. Kilidi yeniden kapatmayın; cihaz açılmayabilir.</p></details>
         <details><summary>Güncellemeler nasıl geliyor?</summary><p>Telefondan otomatik (OTA) güncelleme yoktur. Yeni FMKOS sürümleri panelinize eklenir ve kurulum aracıyla yüklenir.</p></details>
       </div>
@@ -649,7 +658,10 @@ input:focus{outline:0;border-color:var(--orange2);box-shadow:0 0 0 4px rgba(255,
         <h2>Telefonunuz hazır. Ya siz?</h2>
         <p>Kaydınızı bırakın, onaylandığında ROM'unuz ve lisansınız panelinizde olsun.</p>
       </div>
-      <button class="btn dark lg" data-auth="register">Hemen Kayıt Ol<svg class="ic"><use href="#i-arrow"/></svg></button>
+      <div class="cta-actions">
+        <button class="btn dark lg" data-auth="register">Hemen Kayıt Ol<svg class="ic"><use href="#i-arrow"/></svg></button>
+        <a class="btn tg lg" data-telegram href="https://t.me/xioami17promax" target="_blank" rel="noopener"><svg class="ic"><use href="#i-send"/></svg>Telegram Kanalı</a>
+      </div>
     </section>
   </main>
 
@@ -683,7 +695,7 @@ input:focus{outline:0;border-color:var(--orange2);box-shadow:0 0 0 4px rgba(255,
         <h3>Lisans kodunuz</h3>
         <div class="license" id="pLicense">—</div>
         <button class="btn ghost block" id="pCopy" disabled><svg class="ic"><use href="#i-copy"/></svg><span>Kodu kopyala</span></button>
-        <p class="hint">Kurulum aracı istediğinde bu kodu yapıştırın. Kod yalnızca sizin cihazınızda geçerlidir.</p>
+        <p class="hint">Lisansınızı kurulum sırasında biz tanımlarız. Kod yalnızca sizin cihazınızda geçerlidir.</p>
       </article>
 
       <article class="card wide">
@@ -695,7 +707,7 @@ input:focus{outline:0;border-color:var(--orange2);box-shadow:0 0 0 4px rgba(255,
           </a>
           <a class="dl" id="pTool" target="_blank" rel="noopener" aria-disabled="true">
             <span class="f-ic"><svg class="ic"><use href="#i-wand"/></svg></span>
-            <span><b>FMKOS Kurulum Aracı</b><small>Windows · tek pencereli sihirbaz</small></span>
+            <span><b>FMKOS Kurulum Aracı</b><small>Windows · zip, yaklaşık 15 MB</small></span>
           </a>
           <a class="dl" id="pTelegram" target="_blank" rel="noopener" aria-disabled="true">
             <span class="f-ic"><svg class="ic"><use href="#i-send"/></svg></span>
@@ -707,11 +719,11 @@ input:focus{outline:0;border-color:var(--orange2);box-shadow:0 0 0 4px rgba(255,
       <article class="card wide">
         <h3>Kurulum adımları</h3>
         <ol class="checklist">
-          <li>ROM ve Kurulum Aracı'nı aynı klasöre indirin.</li>
-          <li>Telefonunuzun yedeğini alın; kurulum tüm verileri siler.</li>
-          <li>Bootloader kilidinin açık olduğundan emin olun ve telefonu USB ile bağlayın.</li>
-          <li><b>FMKOS_Kurulum.exe</b>'yi açın, lisans kodunuzu yapıştırın ve yönergeleri izleyin.</li>
-          <li>Kurulum bitene kadar kabloyu çıkarmayın. Sonrasında bootloader'ı kilitlemeyin.</li>
+          <li><b>Kurulum Aracı</b> zip'ini bir klasöre çıkarın (örnek: <b>C:\FMKOS</b>).</li>
+          <li><b>ROM dosyasını</b> aynı klasöre, <b>FmkOS_Kurulum.exe</b>'nin yanına koyun. Adını değiştirmeyin, açmaya çalışmayın.</li>
+          <li>Diskte en az 20 GB boş yer bırakın ve telefonunuzun yedeğini alın; kurulum tüm verileri siler.</li>
+          <li><a class="inline-link" data-telegram href="https://t.me/xioami17promax" target="_blank" rel="noopener">Telegram'dan</a> kurulum saati alın. O saatte bilgisayarınızı açık tutun, telefonu orijinal kabloyla bağlayın.</li>
+          <li>Uzaktan bağlanıp lisansınızı tanımlıyor ve kurulumu biz yapıyoruz. Kurulumdan sonra bootloader'ı kilitlemeyin.</li>
         </ol>
       </article>
     </div>
@@ -719,6 +731,7 @@ input:focus{outline:0;border-color:var(--orange2);box-shadow:0 0 0 4px rgba(255,
 
   <footer class="footer">
     <div class="brand"><img class="logo" data-logo alt="" width="28" height="28"><img class="brand-title" data-title alt="FMKOS Prime"></div>
+    <a class="footer-tg" data-telegram href="https://t.me/xioami17promax" target="_blank" rel="noopener"><svg class="ic"><use href="#i-send"/></svg>t.me/xioami17promax</a>
     <p>FMKOS bağımsız bir ROM projesidir; Xiaomi ile bağlantısı yoktur. Ürün adları sahiplerine aittir.</p>
   </footer>
 
@@ -740,6 +753,8 @@ input:focus{outline:0;border-color:var(--orange2);box-shadow:0 0 0 4px rgba(255,
   var REVEAL_STAGGER_COUNT = 4;
   var REVEAL_STAGGER_MS = 70;
   var REVEAL_CLEANUP_MS = 1000;
+  /** Sunucuya ulaşılamazsa kullanılan Telegram kanalı. Asıl değer Ayarlar sayfasındaki "telegram" satırıdır. */
+  var DEFAULT_TELEGRAM = 'https://t.me/xioami17promax';
 
   var $ = function (id) { return document.getElementById(id); };
   var state = { email: '', resendTimer: null, toastTimer: null };
@@ -776,7 +791,7 @@ input:focus{outline:0;border-color:var(--orange2);box-shadow:0 0 0 4px rgba(255,
 
   /** Yerel önizleme için sahte sunucu (Google dışında açıldığında). Kod: 123456 */
   function demoServer(name, args) {
-    var pub = { version: 'OS4.0.57.0.FMK', telegram: 'https://t.me/', announcement: '' };
+    var pub = { version: 'OS4.0.57.0.FMK', telegram: DEFAULT_TELEGRAM, announcement: '' };
     var answers = {
       apiPublic: function () { return { ok: true, data: pub }; },
       apiRequestCode: function () { return { ok: true, data: { ttl: 600 } }; },
@@ -1011,10 +1026,17 @@ input:focus{outline:0;border-color:var(--orange2);box-shadow:0 0 0 4px rgba(255,
 
   /* ---------- herkese açık bilgiler ---------- */
   function applyPublic(info) {
-    Array.prototype.forEach.call(document.querySelectorAll('[data-version]'), function (el) {
-      el.textContent = info.version;
+    if (info.version) {
+      Array.prototype.forEach.call(document.querySelectorAll('[data-version]'), function (el) {
+        el.textContent = info.version;
+      });
+    }
+    var telegram = info.telegram || DEFAULT_TELEGRAM;
+    $('navTelegram').href = telegram;
+    $('navTelegram').hidden = false;
+    Array.prototype.forEach.call(document.querySelectorAll('[data-telegram]'), function (el) {
+      el.href = telegram;
     });
-    if (info.telegram) { $('navTelegram').href = info.telegram; $('navTelegram').hidden = false; }
     if (info.announcement) { $('announce').textContent = info.announcement; $('announce').hidden = false; }
   }
 
@@ -1412,7 +1434,7 @@ input:focus{outline:0;border-color:var(--orange2);box-shadow:0 0 0 4px rgba(255,
   bind();
   bindReveal();
   rearDemos();
-  call('apiPublic').then(applyPublic).catch(function () { /* varsayılan metinler kalır */ });
+  call('apiPublic').then(applyPublic).catch(function () { applyPublic({}); /* varsayılan metinler kalır */ });
   var saved = store('get');
   if (saved) loadPanel(saved);
 })();
