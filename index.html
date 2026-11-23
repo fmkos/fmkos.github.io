@@ -1237,7 +1237,10 @@ input:focus{outline:0;border-color:var(--orange2);box-shadow:0 0 0 4px rgba(255,
       if (window.console) console.error('guncelleme-denetimi', err);
       var name = err && err.name;
       var text = err && err.message;
-      if (name === 'NotFoundError' || text === 'secilmedi') {
+      if (/already in use|in used by another/i.test(text || '')) {
+        updStatus('Telefon bilgisayarda <b>başka bir program</b> tarafından kullanılıyor (genelde FMKOS Kurulum aracı ya da arka planda çalışan <b>adb</b>). ' +
+          'Bu programları kapatın; emin değilseniz bilgisayarı yeniden başlatın ya da telefonun kablosunu çıkarıp takın, sonra tekrar deneyin.', 'warn');
+      } else if (name === 'NotFoundError' || text === 'secilmedi') {
         updStatus('Telefon seçilmedi ya da listede görünmedi. Kabloyu takıp <b>USB hata ayıklama</b>yı açın, sonra tekrar deneyin.', 'warn');
       } else {
         updStatus('Telefon okunamadı. Telefondaki izin penceresini onaylayın, açık bir adb ya da kurulum aracı varsa kapatın ' +
