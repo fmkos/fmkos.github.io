@@ -270,6 +270,17 @@ input:focus{outline:0;border-color:var(--orange2);box-shadow:0 0 0 4px rgba(255,
 .serial-hint.ok b{color:var(--ok)}
 .serial-hint.warn{color:var(--warn)}
 @media (max-width:680px){.serial-row{flex-direction:column}.serial-row .btn{width:100%}}
+.upd-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+.upd-status{margin-top:14px;padding:14px 16px;border-radius:13px;font-size:14.5px;line-height:1.55;font-weight:600;
+  background:rgba(255,255,255,.03);border:1px solid var(--line2);color:var(--muted)}
+.upd-status b{color:var(--text)}
+.upd-status.ok{background:rgba(53,211,154,.1);border-color:rgba(53,211,154,.38);color:#9bebcd}
+.upd-status.ok b{color:#c9f6e4}
+.upd-status.new{background:rgba(255,105,0,.1);border-color:rgba(255,146,43,.45);color:var(--amber)}
+.upd-status.new b{color:#ffd9b3}
+.upd-status.warn{background:rgba(255,182,72,.1);border-color:rgba(255,182,72,.4);color:#ffd79a}
+.upd-status.busy{color:var(--silver)}
+@media (max-width:680px){.upd-row .btn{width:100%}}
 .footer{max-width:1160px;margin:80px auto 0;padding:28px 20px 40px;border-top:1px solid var(--line);
   display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-content:space-between;color:var(--dim);font-size:13.5px}
 
@@ -428,6 +439,7 @@ input:focus{outline:0;border-color:var(--orange2);box-shadow:0 0 0 4px rgba(255,
       <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5"/></symbol>
       <symbol id="i-bolt" viewBox="0 0 24 24"><path d="M13 2.5 5 13.5h6l-1 8 8-11h-6z"/></symbol>
       <symbol id="i-usb" viewBox="0 0 24 24"><path d="M12 21V4m0 0 3 3m-3-3L9 7m3 5-3.5-2.5M12 14l3.5-2.5M9.5 9.5 8 10v2.5M15 9.5l1.5.5V13"/><circle cx="12" cy="21" r="1.2"/></symbol>
+      <symbol id="i-refresh" viewBox="0 0 24 24"><path d="M20 11.5a8 8 0 1 0-.5 4M20 5v4h-4"/></symbol>
     </defs>
   </svg>
 
@@ -710,6 +722,16 @@ input:focus{outline:0;border-color:var(--orange2);box-shadow:0 0 0 4px rgba(255,
         <p class="hint">Lisansınızı kurulum sırasında biz tanımlarız. Kod yalnızca sizin cihazınızda geçerlidir.</p>
       </article>
 
+      <article class="card wide upd" id="pUpdateCard" hidden>
+        <h3>Güncelleme denetimi</h3>
+        <p class="hint">Telefonunuzu kabloyla bağlayın; <b>Geliştirici seçenekleri</b> ve <b>USB hata ayıklama</b> açık olsun. "Güncelleştirme Denetle"ye bastığınızda telefonun sürümü okunur ve en güncel FMKOS ile karşılaştırılır. Chrome veya Edge gerekir.</p>
+        <div class="upd-row">
+          <button class="btn primary" id="btnCheckUpdate"><svg class="ic"><use href="#i-refresh"/></svg><span>Güncelleştirme Denetle</span></button>
+          <a class="btn tg" id="btnUpdateDownload" target="_blank" rel="noopener" hidden><svg class="ic"><use href="#i-down"/></svg><span>Güncellemeyi İndir</span></a>
+        </div>
+        <div class="upd-status" id="updStatus" hidden></div>
+      </article>
+
       <article class="card wide">
         <h3>İndirmeler</h3>
         <div class="downloads">
@@ -818,6 +840,8 @@ input:focus{outline:0;border-color:var(--orange2);box-shadow:0 0 0 4px rgba(255,
           deviceName: 'Xiaomi 17 Pro Max', serial: 'ABC123XYZ', status: 'Aktif', active: true,
           license: 'FMK1-DEMO-4F7A-92KD-XXXX', note: '', version: pub.version,
           romUrl: 'https://example.com/rom', toolUrl: 'https://example.com/arac',
+          latestVersion: decodeURIComponent((location.search.match(/[?&]demoLatest=([^&]+)/) || [])[1] || ''),
+          versionProp: 'ro.mi.os.version.incremental', updateUrl: 'https://example.com/guncelleme',
           telegram: pub.telegram, announcement: '' } };
       }
     };
@@ -995,6 +1019,12 @@ input:focus{outline:0;border-color:var(--orange2);box-shadow:0 0 0 4px rgba(255,
     setLink($('pRom'), p.romUrl);
     setLink($('pTool'), p.toolUrl);
     setLink($('pTelegram'), p.telegram);
+
+    // Güncelleme denetimi yalnızca lisanslı (indirmeye hakkı olan) müşteriye görünür.
+    state.update = { prop: p.versionProp || 'ro.mi.os.version.incremental', latest: p.latestVersion || '', url: p.updateUrl || '' };
+    $('pUpdateCard').hidden = !p.license;
+    $('updStatus').hidden = true;
+    $('btnUpdateDownload').hidden = true;
   }
 
   function loadPanel(token) {
@@ -1097,6 +1127,7 @@ input:focus{outline:0;border-color:var(--orange2);box-shadow:0 0 0 4px rgba(255,
     $('pCopy').addEventListener('click', copyLicense);
     bindOtp();
     bindSerialReader();
+    $('btnCheckUpdate').addEventListener('click', checkUpdate);
   }
 
   /* ---------- seri no oku (WebUSB) ---------- */
@@ -1139,6 +1170,80 @@ input:focus{outline:0;border-color:var(--orange2);box-shadow:0 0 0 4px rgba(255,
         }
       }).then(function () { btn.disabled = false; });
     });
+  }
+
+  /* ---------- güncelleme denetimi (WebUSB + ADB getprop) ---------- */
+  // Telefona ADB ile baglanip surum ozelligini (varsayilan ro.mi.os.version.incremental) okur,
+  // sitedeki son surumle kiyaslar. Kutuphane yalnizca butona basilinca yuklenir; hata sayfayi bozmaz.
+  // @yume-chan/adb 2.6.4 + adb-daemon-webusb 2.3.2 + adb-credential-web 2.1.0, tek dosyaya paketlenmiş (sitenin kökünde).
+  var ADB_BUNDLE = 'adb.js';
+
+  function updEsc(s) {
+    return String(s).replace(/[&<>"']/g, function (c) { return '&#' + c.charCodeAt(0) + ';'; });
+  }
+
+  function updStatus(msg, kind) {
+    var el = $('updStatus');
+    el.hidden = false;
+    el.innerHTML = msg;
+    el.className = 'upd-status' + (kind ? ' ' + kind : '');
+  }
+
+  function readPhoneVersion(prop) {
+    return import(new URL(ADB_BUNDLE, location.href).href).then(function (lib) {
+      return lib.readProp(prop);
+    }).then(function (r) { return r.value; });
+  }
+
+  function handleVersion(ver) {
+    var u = state.update || {};
+    var phone = 'Telefon sürümü: <b>' + updEsc(ver || 'okunamadı') + '</b>';
+    if (!ver) {
+      updStatus(phone + '<br>Sürüm bilgisi okunamadı. Telefonda FMKOS kurulu olduğundan emin olun ya da destek ile iletişime geçin.', 'warn');
+      return;
+    }
+    if (!u.latest) {
+      updStatus(phone + '<br><b>Sisteminiz güncel.</b> Şu an yayımlanmış yeni bir güncelleme yok.', 'ok');
+      return;
+    }
+    if (ver === u.latest) {
+      updStatus(phone + '<br><b>Sisteminiz güncel.</b> Yeni bir sürüm yok.', 'ok');
+      return;
+    }
+    var msg = phone + '<br>En güncel sürüm: <b>' + updEsc(u.latest) + '</b><br><b>Yeni bir sürüm var.</b> ' +
+      'Güncellemeyi indirin; kurulum aracıyla "Hızlı güncelleme" uygulanır (verileriniz korunur).';
+    if (u.url) {
+      updStatus(msg, 'new');
+      var a = $('btnUpdateDownload');
+      a.href = u.url;
+      a.hidden = false;
+    } else {
+      updStatus(msg + '<br>İndirme bağlantısı henüz hazır değil; lütfen destek ile iletişime geçin.', 'new');
+    }
+  }
+
+  function checkUpdate() {
+    var btn = $('btnCheckUpdate');
+    var u = state.update || {};
+    $('btnUpdateDownload').hidden = true;
+    if (!(navigator.usb && navigator.usb.requestDevice)) {
+      updStatus('Bu tarayıcı telefonla bağlantıyı desteklemiyor. <b>Chrome</b> veya <b>Edge</b> kullanın.', 'warn');
+      return;
+    }
+    btn.disabled = true;
+    updStatus('Telefon bağlanıyor… Açılan listeden telefonunuzu seçip "Bağlan"a basın. Telefonda ' +
+      '<b>"USB hata ayıklamaya izin verilsin mi?"</b> çıkarsa <b>İzin ver</b>e dokunun.', 'busy');
+    readPhoneVersion(u.prop).then(handleVersion).catch(function (err) {
+      if (window.console) console.error('guncelleme-denetimi', err);
+      var name = err && err.name;
+      var text = err && err.message;
+      if (name === 'NotFoundError' || text === 'secilmedi') {
+        updStatus('Telefon seçilmedi ya da listede görünmedi. Kabloyu takıp <b>USB hata ayıklama</b>yı açın, sonra tekrar deneyin.', 'warn');
+      } else {
+        updStatus('Telefon okunamadı. Telefondaki izin penceresini onaylayın, açık bir adb ya da kurulum aracı varsa kapatın ' +
+          '(Windows\'ta Google USB sürücüsü gerekebilir) ve tekrar deneyin.', 'warn');
+      }
+    }).then(function () { btn.disabled = false; });
   }
 
   /** Bölümler kaydırıldıkça yumuşakça belirir. Gözlemci yoksa içerik doğrudan görünür kalır. */
