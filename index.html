@@ -326,8 +326,81 @@ input:focus{outline:0;border-color:var(--orange2);box-shadow:0 0 0 4px rgba(255,
 .reveal{opacity:0;transform:translateY(26px);transition:opacity .6s ease,transform .6s ease}
 .reveal.in{opacity:1;transform:none}
 
+/* ---- premium ekler: sürüm kartı, vitrin, Telegram, güven satırı ---- */
+.ver-card{left:27%;top:-54px;padding:10px 16px 10px 10px;border-radius:16px;gap:11px;border-color:rgba(255,146,43,.5);animation-delay:-1s;
+  background:linear-gradient(160deg,rgba(28,20,12,.92),rgba(11,17,28,.9))}
+.ver-card .vc-ic{display:grid;place-items:center;width:36px;height:36px;border-radius:11px;background:var(--grad);color:var(--ink);flex:none}
+.ver-card .vc-ic .ic{color:var(--ink)}
+.ver-card small{display:block;font:700 10.5px var(--font);letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.ver-card b{display:block;font:800 15.5px var(--display);letter-spacing:-.01em;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.ver-card i{display:block;font:600 11px var(--font);font-style:normal;color:var(--dim)}
+
+.spot-head{max-width:760px}
+.spot-head .title{margin-bottom:12px}
+.spot-sub{color:var(--muted);font-size:17px;margin-bottom:34px}
+.spot-card{position:relative;display:grid;grid-template-columns:1fr 1.02fr;gap:40px;align-items:center;padding:42px;border-radius:30px;overflow:hidden;
+  background:radial-gradient(700px 420px at 0% 0%,rgba(255,105,0,.12),transparent 60%),radial-gradient(600px 420px at 100% 100%,rgba(30,155,255,.12),transparent 60%),linear-gradient(180deg,var(--card2),var(--card)) padding-box,
+    linear-gradient(140deg,rgba(255,146,43,.7),rgba(255,146,43,.12) 40%,rgba(30,155,255,.15) 70%,rgba(30,155,255,.6)) border-box;
+  border:1.5px solid transparent;box-shadow:0 40px 90px rgba(0,0,0,.5)}
+.ver-pill{display:inline-flex;align-items:center;gap:9px;padding:8px 16px;border-radius:99px;font-weight:800;font-size:14px;color:var(--silver);
+  border:1px solid rgba(30,155,255,.45);background:rgba(30,155,255,.1)}
+.spot-copy h3{font-size:clamp(30px,3.6vw,46px);font-weight:800;margin:20px 0 14px}
+.spot-copy>p{color:var(--muted);font-size:17px}
+.pills{display:flex;flex-wrap:wrap;gap:9px;margin:24px 0 20px}
+.pills span{display:inline-flex;align-items:center;gap:7px;padding:9px 14px;border-radius:99px;font-weight:700;font-size:14px;
+  background:rgba(255,255,255,.04);border:1px solid var(--line2);transition:border-color .2s,background .2s}
+.pills span .ic{color:var(--orange2)}
+.pills span:hover{border-color:rgba(255,146,43,.6);background:rgba(255,105,0,.08)}
+.spot-note{color:var(--dim)!important;font-size:14px!important;margin-bottom:22px}
+.spot-cta{display:flex;flex-wrap:wrap;gap:12px}
+
+.poster{position:relative;padding:22px;border-radius:24px;overflow:hidden;
+  background:radial-gradient(420px 260px at 85% -10%,rgba(255,105,0,.35),transparent 65%),radial-gradient(380px 260px at -10% 110%,rgba(30,155,255,.3),transparent 65%),#070b14;
+  border:1px solid rgba(255,146,43,.35);box-shadow:inset 0 0 0 1px rgba(255,255,255,.03),0 0 60px rgba(255,105,0,.12)}
+.poster::after{content:'';position:absolute;inset:0;pointer-events:none;background:linear-gradient(115deg,transparent 40%,rgba(255,255,255,.06) 50%,transparent 60%);
+  background-size:250% 100%;animation:sheen 6s ease-in-out infinite}
+@keyframes sheen{0%{background-position:120% 0}60%,100%{background-position:-120% 0}}
+.poster-top{display:flex;align-items:center;gap:12px}
+.poster-logo{width:46px;height:46px;border-radius:13px;box-shadow:0 0 24px rgba(30,155,255,.45)}
+.poster-top b{display:block;font:800 22px var(--display);color:#fff;line-height:1}
+.poster-top b em{background:none;-webkit-background-clip:initial;background-clip:initial;color:var(--blue)}
+.poster-top span{font:700 12px var(--font);color:var(--muted)}
+.poster-tag{margin-left:auto;padding:6px 12px;border-radius:99px;font:800 11.5px var(--display)!important;letter-spacing:.08em;text-transform:uppercase;color:var(--ink)!important;background:var(--grad)}
+.poster-kicker{margin:14px 0 14px;font:800 12px var(--display);letter-spacing:.2em;text-transform:uppercase;color:var(--orange2)}
+.poster-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.pt{padding:14px 12px;border-radius:15px;background:rgba(255,255,255,.035);border:1px solid rgba(255,146,43,.22);transition:transform .2s,border-color .2s}
+.pt:hover{transform:translateY(-3px);border-color:rgba(255,146,43,.6)}
+.pt .ic{width:24px;height:24px;color:var(--orange2);margin-bottom:8px}
+.pt:nth-child(even) .ic{color:var(--blue2)}
+.pt b{display:block;font:800 14px var(--display);line-height:1.2}
+.pt span{display:block;margin-top:4px;font-size:12px;line-height:1.35;color:var(--muted)}
+.poster-wide{display:flex;align-items:center;gap:14px;margin-top:10px;padding:14px 16px;border-radius:15px;
+  background:linear-gradient(100deg,rgba(255,105,0,.18),rgba(30,155,255,.12));border:1px solid rgba(255,146,43,.45)}
+.poster-wide .ic{width:30px;height:30px;color:var(--amber);flex:none}
+.poster-wide b{display:block;font:800 15px var(--display)}
+.poster-wide span{font-size:12.5px;color:var(--silver)}
+
+.tg-card{display:flex;align-items:center;gap:14px;margin-top:22px;padding:14px 14px 14px 16px;border-radius:18px;
+  background:linear-gradient(100deg,rgba(55,174,226,.14),rgba(11,17,28,.6));border:1px solid rgba(55,174,226,.4);transition:transform .2s,border-color .2s}
+.tg-card:hover{transform:translateY(-2px);border-color:#37aee2}
+.tg-ic{display:grid;place-items:center;width:46px;height:46px;border-radius:50%;flex:none;background:linear-gradient(180deg,#45b8ea,#1e96c8);color:#fff;box-shadow:0 8px 22px rgba(55,174,226,.35)}
+.tg-ic .ic{width:22px;height:22px}
+.tg-txt b{display:block;font:800 16px var(--display)}
+.tg-txt small{color:#7fd0f5;font-weight:700}
+.tg-go{margin-left:auto;display:inline-flex;align-items:center;gap:6px;padding:10px 14px;border-radius:12px;font-weight:800;font-size:14px;color:var(--ink);background:var(--grad);white-space:nowrap}
+.trust{list-style:none;padding:0;display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:14px}
+.trust li{padding:12px 10px;border-radius:14px;text-align:center;background:rgba(255,255,255,.03);border:1px solid var(--line)}
+.trust .ic{color:var(--orange2);width:20px;height:20px;margin-bottom:4px}
+.trust b{display:block;font:800 13.5px var(--display)}
+.trust span{display:block;font-size:12px;color:var(--muted);line-height:1.3}
+
+.features article,.device,.faq details,.stats div{border-color:rgba(255,146,43,.16)}
+.to-top{margin-left:auto}
+
 /* ---- duyarlı ---- */
 @media (max-width:1020px){
+  .spot-card{grid-template-columns:1fr;padding:30px}
+  .ver-card{left:auto;right:4%;top:-10px}
   .hero{grid-template-columns:1fr;gap:20px;padding-top:40px}
   .stage{height:470px;font-size:6.8px;max-width:520px;width:100%;margin:0 auto}
   .r1{width:380px;height:380px}.r2{width:430px;height:430px}
@@ -357,6 +430,15 @@ input:focus{outline:0;border-color:var(--orange2);box-shadow:0 0 0 4px rgba(255,
   .phone.mini{font-size:3.7px}
   .cta{margin:72px 16px 0;padding:32px 24px}
   .cta .btn,.cta-actions{width:100%}
+  .ver-card{display:none}
+  .spot-card{padding:22px;border-radius:24px}
+  .poster{padding:16px}
+  .poster-grid{grid-template-columns:repeat(2,1fr)}
+  .trust{grid-template-columns:repeat(2,1fr)}
+  .tg-card{flex-wrap:wrap}.tg-go{margin-left:0;width:100%;justify-content:center}
+  .spot-cta{flex-direction:column}
+  .spot-cta .btn{width:100%}
+  .to-top{margin-left:0}
 }
 
 /* Arka ekran tanitim animasyonlari: tam ekran, kameralar ekranin ustunde */
@@ -452,6 +534,7 @@ input:focus{outline:0;border-color:var(--orange2);box-shadow:0 0 0 4px rgba(255,
       <img class="brand-title" data-title alt="FMKOS Prime">
     </button>
     <nav class="nav-links" id="navLinks" aria-label="Bölümler">
+      <button data-go="yenilikler">Yenilikler</button>
       <button data-go="ozellikler">Özellikler</button>
       <button data-go="cihazlar">Cihazlar</button>
       <button data-go="kurulum">Kurulum</button>
@@ -514,6 +597,8 @@ input:focus{outline:0;border-color:var(--orange2);box-shadow:0 0 0 4px rgba(255,
         <span class="float f1"><i class="dot o"></i>17 Pro</span>
         <span class="float f2"><i class="dot"></i>17 Pro Max</span>
         <span class="float f3"><svg class="ic"><use href="#i-lang"/></svg>%100 Türkçe</span>
+        <div class="float ver-card"><span class="vc-ic"><svg class="ic"><use href="#i-bolt"/></svg></span>
+          <span><small>En yeni sürüm</small><b data-version>OS3.0.570.0.FMK</b><i>Güncel · Stabil · Global</i></span></div>
       </div>
     </section>
 
@@ -524,6 +609,51 @@ input:focus{outline:0;border-color:var(--orange2);box-shadow:0 0 0 4px rgba(255,
       </div>
     </div>
 
+    <!-- ===================== SÜRÜM TANITIMI ===================== -->
+    <section class="section spot" id="yenilikler">
+      <div class="spot-head">
+        <p class="eyebrow"><span data-version>OS3.0.570.0.FMK</span> · Global sürüm tanıtımı</p>
+        <h2 class="title">Öne çıkan <em>yenilikler</em></h2>
+        <p class="spot-sub">Günlük kullanımda hemen fark edeceğiniz özellikler ve görsel yenilikler.</p>
+      </div>
+      <div class="spot-card">
+        <div class="spot-copy">
+          <span class="ver-pill"><i class="dot"></i>FMKOS <span data-version>OS3.0.570.0.FMK</span></span>
+          <h3>Yeni nesil <em>premium</em> deneyim</h3>
+          <p>Süper Ada bildirimleri, arka ekran araçları ve baştan sona Türkçe arayüz; Xiaomi 17 Pro serisine özel tek bir ROM'da.</p>
+          <div class="pills">
+            <span><svg class="ic"><use href="#i-island"/></svg>Süper Ada</span>
+            <span><svg class="ic"><use href="#i-rear"/></svg>Arka ekran</span>
+            <span><svg class="ic"><use href="#i-lang"/></svg>Tam Türkçe</span>
+            <span><svg class="ic"><use href="#i-refresh"/></svg>Güncelleme denetimi</span>
+          </div>
+          <p class="spot-note">ROM indirme bağlantıları, lisansınız ve güncelleme denetimi giriş yaptıktan sonra müşteri panelinizde.</p>
+          <div class="spot-cta">
+            <button class="btn primary" data-auth="login">Hesabımdaki sürümü gör<svg class="ic"><use href="#i-arrow"/></svg></button>
+            <button class="btn ghost" data-auth="register">Kayıt ol</button>
+          </div>
+        </div>
+
+        <div class="poster" aria-hidden="true">
+          <div class="poster-top">
+            <img class="poster-logo" data-logo alt="">
+            <div><b>FMK<em>OS</em></b><span><span data-version>OS3.0.570.0.FMK</span> · Global</span></div>
+            <span class="poster-tag">Yeni sürüm</span>
+          </div>
+          <p class="poster-kicker" lang="en">Xiaomi 17 Pro · 17 Pro Max</p>
+          <div class="poster-grid">
+            <div class="pt"><svg class="ic"><use href="#i-island"/></svg><b>Süper Ada</b><span>Bildirimler adada, daha zengin</span></div>
+            <div class="pt"><svg class="ic"><use href="#i-rear"/></svg><b>Arka ekran</b><span>Saat, adım, arama, oyun</span></div>
+            <div class="pt"><svg class="ic"><use href="#i-lang"/></svg><b>%100 Türkçe</b><span>Sistem ve uygulamalar</span></div>
+            <div class="pt"><svg class="ic"><use href="#i-apps"/></svg><b>Global uygulamalar</b><span>Türkiye'ye hazır</span></div>
+            <div class="pt"><svg class="ic"><use href="#i-key"/></svg><b>Cihaza özel lisans</b><span>Yalnızca sizin telefonunuzda</span></div>
+            <div class="pt"><svg class="ic"><use href="#i-shield"/></svg><b>Doğrulanmış paket</b><span>SHA-256 denetimi</span></div>
+          </div>
+          <div class="poster-wide"><svg class="ic"><use href="#i-refresh"/></svg><div><b>Tek tıkla güncelleme denetimi</b><span>Telefonu bağlayın, panel yeni sürüm olup olmadığını söylesin.</span></div></div>
+        </div>
+      </div>
+    </section>
+
     <section class="section access" id="kurulum">
       <div class="access-copy">
         <p class="eyebrow">Kurulum</p>
@@ -533,6 +663,17 @@ input:focus{outline:0;border-color:var(--orange2);box-shadow:0 0 0 4px rgba(255,
           <li><span>2</span><div><h3>Dosyaları indirin</h3><p>Onaylandıktan sonra panelden cihazınızın ROM'unu ve kurulum aracını aynı klasöre indirin.</p></div></li>
           <li><span>3</span><div><h3>Kurulumu biz yapalım</h3><p>Telegram'dan saat alın; uzaktan bağlanıp lisansınızı tanımlıyor ve kurulumu sizin için yapıyoruz.</p></div></li>
         </ol>
+        <a class="tg-card" data-telegram href="https://t.me/xioami17promax" target="_blank" rel="noopener">
+          <span class="tg-ic"><svg class="ic"><use href="#i-send"/></svg></span>
+          <span class="tg-txt"><b>Telegram kanalımız</b><small>t.me/xioami17promax</small></span>
+          <span class="tg-go">Kanala katıl<svg class="ic"><use href="#i-arrow"/></svg></span>
+        </a>
+        <ul class="trust">
+          <li><svg class="ic"><use href="#i-wand"/></svg><b>Uzaktan</b><span>kurulum desteği</span></li>
+          <li><svg class="ic"><use href="#i-key"/></svg><b>Cihaza özel</b><span>lisans</span></li>
+          <li><svg class="ic"><use href="#i-refresh"/></svg><b>Tek tıkla</b><span>güncelleme denetimi</span></li>
+          <li><svg class="ic"><use href="#i-shield"/></svg><b>Şifreli</b><span>ROM paketi</span></li>
+        </ul>
       </div>
 
       <!-- Giriş / Kayıt kartı -->
@@ -767,6 +908,7 @@ input:focus{outline:0;border-color:var(--orange2);box-shadow:0 0 0 4px rgba(255,
     <div class="brand"><img class="logo" data-logo alt="" width="28" height="28"><img class="brand-title" data-title alt="FMKOS Prime"></div>
     <a class="footer-tg" data-telegram href="https://t.me/xioami17promax" target="_blank" rel="noopener"><svg class="ic"><use href="#i-send"/></svg>t.me/xioami17promax</a>
     <p>FMKOS bağımsız bir ROM projesidir; Xiaomi ile bağlantısı yoktur. Ürün adları sahiplerine aittir.</p>
+    <button class="btn ghost sm to-top" data-go="top">Başa dön<svg class="ic" style="transform:rotate(-90deg)"><use href="#i-arrow"/></svg></button>
   </footer>
 
   <div class="toast" id="toast" role="status" hidden></div>
@@ -783,7 +925,7 @@ input:focus{outline:0;border-color:var(--orange2);box-shadow:0 0 0 4px rgba(255,
   var RESEND_SECONDS = 60;
   var CODE_LENGTH = 6;
   var TOAST_MS = 2600;
-  var REVEAL_SELECTOR = '.steps li, .auth, .stats div, .features article, .device, .faq details, .cta';
+  var REVEAL_SELECTOR = '.steps li, .auth, .stats div, .features article, .device, .faq details, .cta, .spot-card, .pt, .tg-card, .trust li';
   var REVEAL_STAGGER_COUNT = 4;
   var REVEAL_STAGGER_MS = 70;
   var REVEAL_CLEANUP_MS = 1000;
